@@ -37,7 +37,7 @@ internal class UserServiceTest {
             userService.getCreatorById(userIdMock)
         }.apply {
             Assertions.assertEquals(
-                message, "Creator with id $userIdMock not found"
+                "Creator with id $userIdMock not found", message
             )
         }
     }
@@ -65,7 +65,7 @@ internal class UserServiceTest {
             userService.getCoCreatorById(userIdMock)
         }.apply {
             Assertions.assertEquals(
-                message, "Co-creator with id $userIdMock not found"
+                "Co-creator with id $userIdMock not found", message
             )
         }
     }
@@ -93,7 +93,7 @@ internal class UserServiceTest {
             userService.getBuyerById(userIdMock)
         }.apply {
             Assertions.assertEquals(
-                message, "Buyer with id $userIdMock not found"
+                "Buyer with id $userIdMock not found", message
             )
         }
     }
@@ -121,7 +121,7 @@ internal class UserServiceTest {
             userService.getOwnerById(userIdMock)
         }.apply {
             Assertions.assertEquals(
-                message, "Owner with id $userIdMock not found"
+                "Owner with id $userIdMock not found", message
             )
         }
     }

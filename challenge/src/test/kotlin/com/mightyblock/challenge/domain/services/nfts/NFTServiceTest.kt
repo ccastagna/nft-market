@@ -90,7 +90,7 @@ internal class NFTServiceTest {
         assertThrows<NFTNotFoundException> {
             nftService.getNFTById(nftId)
         }.apply {
-            assertEquals(message, "NFT $nftId not found.")
+            assertEquals("NFT $nftId not found.", message)
         }
         verify(nftRepositoryService).getNFTById(nftId)
     }

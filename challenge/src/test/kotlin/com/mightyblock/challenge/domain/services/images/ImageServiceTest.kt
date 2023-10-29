@@ -66,7 +66,7 @@ internal class ImageServiceTest {
         assertThrows<InvalidImageUrlException> {
             imageService.checkImageIsLoadedOrThrow(invalidImageUrl)
         }.apply {
-            assertEquals(message, "Invalid image url: $invalidImageUrl")
+            assertEquals("Invalid image url: $invalidImageUrl", message)
         }
     }
 
@@ -81,7 +81,7 @@ internal class ImageServiceTest {
         assertThrows<ImageNotFoundException> {
             imageService.checkImageIsLoadedOrThrow(validImageUrl)
         }.apply {
-            assertEquals(message, "Image $validImageUrl not found")
+            assertEquals("Image $imageName not found", message)
         }
     }
 }
