@@ -1,6 +1,6 @@
 package com.mightyblock.challenge.infrastructure.drivers.dtos.responses
 
-import java.util.UUID
+import java.util.*
 
 data class MintNFTResponseDTO(
     val nftId: UUID,

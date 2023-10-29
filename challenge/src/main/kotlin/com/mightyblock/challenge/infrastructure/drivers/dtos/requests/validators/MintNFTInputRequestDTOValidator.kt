@@ -2,7 +2,7 @@ package com.mightyblock.challenge.infrastructure.drivers.dtos.requests.validator
 
 import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.MintNFTRequestDTO
 
-class MintNFTInputRequestDTOValidator: IInputRequestValidator<MintNFTRequestDTO> {
+class MintNFTInputRequestDTOValidator : IInputRequestValidator<MintNFTRequestDTO> {
 
     override fun validate(request: MintNFTRequestDTO) {
         if (request.creatorId <= 0) throw IllegalArgumentException("Invalid creatorId: ${request.creatorId}.")

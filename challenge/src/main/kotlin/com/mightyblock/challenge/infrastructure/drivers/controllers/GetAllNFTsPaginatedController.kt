@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController
 class GetAllNFTsPaginatedController(private val getAllNFTsPaginatedHandler: IRequestHandler<GetAllNFTsPaginatedRequestDTO>) {
 
     @GetMapping
-    fun getAllNFTsPaginated(@RequestParam(defaultValue = "0") page: Int, @RequestParam(defaultValue = "3") size: Int): ResponseEntity<Any> {
+    fun getAllNFTsPaginated(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "3") size: Int
+    ): ResponseEntity<Any> {
         val getAllNFTsPaginatedRequestDTO = GetAllNFTsPaginatedRequestDTO(page, size)
         return getAllNFTsPaginatedHandler.handle(getAllNFTsPaginatedRequestDTO)
     }

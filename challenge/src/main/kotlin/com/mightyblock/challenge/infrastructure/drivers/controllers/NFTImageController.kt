@@ -4,7 +4,6 @@ import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.GetNFTImag
 import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.UploadNFTImageRequestDTO
 import com.mightyblock.challenge.infrastructure.drivers.handlers.IRequestHandler
 import jakarta.servlet.http.HttpServletRequest
-import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

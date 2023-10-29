@@ -3,7 +3,7 @@ package com.mightyblock.challenge.infrastructure.drivens.repositorydtos
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 
 @Entity
 @Table(name = "nft_sales")

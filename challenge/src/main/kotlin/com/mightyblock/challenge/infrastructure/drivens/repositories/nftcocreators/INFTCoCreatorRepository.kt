@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface INFTCoCreatorRepository: JpaRepository<NFTCoCreatorRepositoryDTO, Int> {
+interface INFTCoCreatorRepository : JpaRepository<NFTCoCreatorRepositoryDTO, Int> {
     fun findAllByNftId(nftId: UUID): List<NFTCoCreatorRepositoryDTO>
 }

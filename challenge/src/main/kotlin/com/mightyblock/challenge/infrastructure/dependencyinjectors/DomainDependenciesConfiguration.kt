@@ -30,7 +30,8 @@ class DomainDependenciesConfiguration {
         NFTService(nftRepositoryService, nftCoCreatorRepositoryService)
 
     @Bean
-    fun getImageService(@Autowired imageRepositoryService: IImageRepositoryService): IImageService = ImageService(imageRepositoryService)
+    fun getImageService(@Autowired imageRepositoryService: IImageRepositoryService): IImageService =
+        ImageService(imageRepositoryService)
 
     @Bean
     fun getNFTSaleService(

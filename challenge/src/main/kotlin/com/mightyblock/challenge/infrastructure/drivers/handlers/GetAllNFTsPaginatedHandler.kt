@@ -8,30 +8,31 @@ import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.validators
 import com.mightyblock.challenge.infrastructure.drivers.dtos.responses.GetAllNFTsPaginatedResponseDTO
 import org.springframework.http.ResponseEntity
 
-class GetAllNFTsPaginatedHandler (
+class GetAllNFTsPaginatedHandler(
     private val getAllNFTsPaginatedRequestDTOValidator: IInputRequestValidator<GetAllNFTsPaginatedRequestDTO>,
     private val getAllNFTsPaginatedUseCase: IGetAllNFTsPaginatedUseCase
-    ) : IRequestHandler<GetAllNFTsPaginatedRequestDTO> {
-        override fun handle(requestDTO: GetAllNFTsPaginatedRequestDTO): ResponseEntity<Any> {
+) : IRequestHandler<GetAllNFTsPaginatedRequestDTO> {
+    override fun handle(requestDTO: GetAllNFTsPaginatedRequestDTO): ResponseEntity<Any> {
 
-            getAllNFTsPaginatedRequestDTOValidator.validate(requestDTO)
+        getAllNFTsPaginatedRequestDTOValidator.validate(requestDTO)
 
-            val request = GetAllNFTsPaginatedRequest(
-                page = requestDTO.page,
-                size = requestDTO.size
-            )
+        val request = GetAllNFTsPaginatedRequest(
+            page = requestDTO.page,
+            size = requestDTO.size
+        )
 
-            val pageableNFTList: PageableNFTList = getAllNFTsPaginatedUseCase.execute(request)
+        val pageableNFTList: PageableNFTList = getAllNFTsPaginatedUseCase.execute(request)
 
-            val getAllNFTsPaginatedResponseDTO = GetAllNFTsPaginatedResponseDTO(
-                nftList = pageableNFTList.nftList.map { nft ->
-                    GetAllNFTsPaginatedResponseDTO.NFT(
-                        nftId = nft.id,
-                        imageUrl = nft.imageUrl,
-                        description = nft.description
-                    ) }
-            )
+        val getAllNFTsPaginatedResponseDTO = GetAllNFTsPaginatedResponseDTO(
+            nftList = pageableNFTList.nftList.map { nft ->
+                GetAllNFTsPaginatedResponseDTO.NFT(
+                    nftId = nft.id,
+                    imageUrl = nft.imageUrl,
+                    description = nft.description
+                )
+            }
+        )
 
-            return ResponseEntity.ok().body(getAllNFTsPaginatedResponseDTO)
-        }
+        return ResponseEntity.ok().body(getAllNFTsPaginatedResponseDTO)
     }
+}

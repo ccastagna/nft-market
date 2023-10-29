@@ -8,7 +8,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/nfts")
-class BuyNFTController( private val buyNFTHandler: IRequestHandler<BuyNFTRequestDTO>) {
+class BuyNFTController(private val buyNFTHandler: IRequestHandler<BuyNFTRequestDTO>) {
 
     @PostMapping("/{nftId}/buy")
     fun buyNFT(@PathVariable nftId: UUID, @RequestBody buyNFTRequestDTO: BuyNFTRequestDTO): ResponseEntity<Any> {

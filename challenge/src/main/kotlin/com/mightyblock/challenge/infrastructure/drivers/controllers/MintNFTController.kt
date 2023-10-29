@@ -1,7 +1,6 @@
 package com.mightyblock.challenge.infrastructure.drivers.controllers
 
 import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.MintNFTRequestDTO
-import com.mightyblock.challenge.infrastructure.drivers.dtos.responses.MintNFTResponseDTO
 import com.mightyblock.challenge.infrastructure.drivers.handlers.IRequestHandler
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

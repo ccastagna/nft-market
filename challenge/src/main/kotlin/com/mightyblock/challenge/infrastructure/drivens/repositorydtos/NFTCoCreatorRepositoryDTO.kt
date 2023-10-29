@@ -1,7 +1,7 @@
 package com.mightyblock.challenge.infrastructure.drivens.repositorydtos
 
 import jakarta.persistence.*
-import java.util.UUID
+import java.util.*
 
 @Entity
 @Table(name = "nft_co_creators")

@@ -12,15 +12,15 @@ class UploadNFTImageHandler(
 ) : IRequestHandler<UploadNFTImageRequestDTO> {
     override fun handle(request: UploadNFTImageRequestDTO): ResponseEntity<Any> {
 
-            uploadNFTImageRequestDTOValidator.validate(request)
+        uploadNFTImageRequestDTOValidator.validate(request)
 
-            val imageUrl: String = uploadNFTImageUseCase.execute(request.image)
+        val imageUrl: String = uploadNFTImageUseCase.execute(request.image)
 
-            val uploadNFTImageResponseDTO = UploadNFTImageResponseDTO(
-                imageUrl = imageUrl
-            )
+        val uploadNFTImageResponseDTO = UploadNFTImageResponseDTO(
+            imageUrl = imageUrl
+        )
 
-            return ResponseEntity.ok().body(uploadNFTImageResponseDTO)
+        return ResponseEntity.ok().body(uploadNFTImageResponseDTO)
 
     }
 }

@@ -29,7 +29,8 @@ class BuyNFTHandler(
             id = nftSale.id,
             nft = BuyNFTResponseDTO.NFT(
                 id = nftSale.nftUpdated.id,
-                ownerId = nftSale.nftUpdated.ownerId),
+                ownerId = nftSale.nftUpdated.ownerId
+            ),
             buyer = BuyNFTResponseDTO.User(
                 id = nftSale.buyerUpdated.userId,
                 balance = nftSale.buyerUpdated.balance

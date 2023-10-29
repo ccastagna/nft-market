@@ -1,7 +1,7 @@
 package com.mightyblock.challenge.domain.models
 
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 
 data class NFT(
     val id: UUID = UUID.randomUUID(),

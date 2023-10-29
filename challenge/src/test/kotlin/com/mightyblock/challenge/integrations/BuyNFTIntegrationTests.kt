@@ -204,9 +204,11 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
             response, listOf(
                 MockMvcResultMatchers.status().isOk,
                 MockMvcResultMatchers.jsonPath("$.buyer.id").value(buyer.userId),
-                MockMvcResultMatchers.jsonPath("$.oldOwner.balance").value(BigDecimal(10.8).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.oldOwner.balance")
+                    .value(BigDecimal(10.8).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.oldOwner.id").value(owner.userId),
-                MockMvcResultMatchers.jsonPath("$.buyer.balance").value(BigDecimal(9.2).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.buyer.balance")
+                    .value(BigDecimal(9.2).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.nft.ownerId").value(buyer.userId),
             )
         )
@@ -228,9 +230,11 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
             response, listOf(
                 MockMvcResultMatchers.status().isOk,
                 MockMvcResultMatchers.jsonPath("$.buyer.id").value(buyer.userId),
-                MockMvcResultMatchers.jsonPath("$.oldOwner.balance").value(BigDecimal(11).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.oldOwner.balance")
+                    .value(BigDecimal(11).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.oldOwner.id").value(owner.userId),
-                MockMvcResultMatchers.jsonPath("$.buyer.balance").value(BigDecimal(9.0).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.buyer.balance")
+                    .value(BigDecimal(9.0).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.nft.ownerId").value(buyer.userId),
             )
         )
@@ -253,9 +257,11 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
             response, listOf(
                 MockMvcResultMatchers.status().isOk,
                 MockMvcResultMatchers.jsonPath("$.buyer.id").value(buyer.userId),
-                MockMvcResultMatchers.jsonPath("$.oldOwner.balance").value(BigDecimal(10.9).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.oldOwner.balance")
+                    .value(BigDecimal(10.9).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.oldOwner.id").value(owner.userId),
-                MockMvcResultMatchers.jsonPath("$.buyer.balance").value(BigDecimal(9.1).setScale(1, RoundingMode.HALF_UP)),
+                MockMvcResultMatchers.jsonPath("$.buyer.balance")
+                    .value(BigDecimal(9.1).setScale(1, RoundingMode.HALF_UP)),
                 MockMvcResultMatchers.jsonPath("$.nft.ownerId").value(buyer.userId),
             )
         )

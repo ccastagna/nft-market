@@ -1,7 +1,7 @@
 package com.mightyblock.challenge.infrastructure.drivers.handlers
 
-import com.mightyblock.challenge.application.usecases.IMintNFTUseCase
 import com.mightyblock.challenge.application.models.MintNFTRequest
+import com.mightyblock.challenge.application.usecases.IMintNFTUseCase
 import com.mightyblock.challenge.domain.models.NFT
 import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.MintNFTRequestDTO
 import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.validators.IInputRequestValidator
