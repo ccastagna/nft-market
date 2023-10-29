@@ -16,16 +16,16 @@ class ImageService(private val imageRepositoryService: IImageRepositoryService) 
     }
 
     override fun getImage(imageName: String): ByteArray {
-        return imageRepositoryService.getImage(imageName)
+        return try {
+            imageRepositoryService.getImage(imageName)
+        } catch (throwable: Throwable) {
+            throw ImageNotFoundException(imageName)
+        }
     }
 
     override fun checkImageIsLoadedOrThrow(imageUrl: String) {
         val imageName = extractImageName(imageUrl) ?: throw InvalidImageUrlException(imageUrl)
-        try {
-            getImage(imageName)
-        } catch (throwable: Throwable) {
-            throw ImageNotFoundException(imageUrl)
-        }
+        getImage(imageName)
     }
 
     private fun extractImageName(imageUrl: String): String? {
