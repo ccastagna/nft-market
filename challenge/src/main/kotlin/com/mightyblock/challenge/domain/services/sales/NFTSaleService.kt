@@ -8,6 +8,7 @@ import com.mightyblock.challenge.domain.models.NFTSaleRequirements
 import com.mightyblock.challenge.domain.models.User
 import com.mightyblock.challenge.domain.repositories.INFTSaleRepositoryService
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.LocalDateTime
 
 class NFTSaleService(private val nftSaleRepositoryService: INFTSaleRepositoryService) : INFTSaleService {
@@ -39,17 +40,23 @@ class NFTSaleService(private val nftSaleRepositoryService: INFTSaleRepositorySer
         val price: BigDecimal = nftSaleRequirements.price
 
         //balance operations
-        val buyerUpdated: User = buyer.copy(balance = collectNFTPriceFromBuyer(buyer, price))
+        var buyerUpdated: User = buyer.copy(balance = collectNFTPriceFromBuyer(buyer, price))
 
         var oldOwnerUpdated: User = owner.copy(balance = payOwnerShare(owner, price))
 
         val creatorsUpdated: List<User> = creators.map { creator ->
-            if (creatorIsOldOwner(creator, owner)) {
-                val oldOwner = creator.copy(balance = payCreatorShare(oldOwnerUpdated, price, creators.size))
-                oldOwnerUpdated = oldOwner
-                oldOwner
-            } else {
-                creator.copy(balance = payCreatorShare(creator, price, creators.size))
+            when (creator.userId) {
+                owner.userId -> {
+                    val oldOwner = creator.copy(balance = payCreatorShare(oldOwnerUpdated, price, creators.size))
+                    oldOwnerUpdated = oldOwner
+                    oldOwner
+                }
+                buyer.userId -> {
+                    val buyerCreator = creator.copy(balance = payCreatorShare(buyerUpdated, price, creators.size))
+                    buyerUpdated = buyerCreator
+                    buyerCreator
+                }
+                else -> creator.copy(balance = payCreatorShare(creator, price, creators.size))
             }
         }
 
@@ -68,22 +75,20 @@ class NFTSaleService(private val nftSaleRepositoryService: INFTSaleRepositorySer
         return nftSaleRepositoryService.save(nftSale)
     }
 
-    private fun creatorIsOldOwner(creator: User, owner: User): Boolean = creator.userId == owner.userId
-
     private fun payCreatorShare(
         creator: User,
         price: BigDecimal,
         numberOfCreators: Int
-    ) = creator.balance + (price * creatorPercentage(numberOfCreators))
+    ) = creator.balance + (price * creatorPercentage(numberOfCreators)).setScale(2, RoundingMode.HALF_UP)
 
     private fun collectNFTPriceFromBuyer(
         buyer: User,
         price: BigDecimal
-    ) = buyer.balance - price
+    ) = buyer.balance - price.setScale(2, RoundingMode.HALF_UP)
 
     private fun payOwnerShare(
         owner: User,
         price: BigDecimal
-    ) = owner.balance + (price * OWNER_PERCENTAGE)
+    ) = owner.balance + (price * OWNER_PERCENTAGE).setScale(2, RoundingMode.HALF_UP)
 
 }
