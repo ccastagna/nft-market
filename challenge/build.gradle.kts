@@ -29,6 +29,8 @@ dependencies {
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.h2database:h2")
+	testImplementation("org.mockito:mockito-core:3.+")
+	testImplementation("org.mockito:mockito-inline:3.+")
 
 }
 
