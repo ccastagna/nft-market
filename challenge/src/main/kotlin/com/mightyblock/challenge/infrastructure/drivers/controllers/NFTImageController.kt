@@ -28,14 +28,9 @@ class NFTImageController(
         return uploadNFTImageHandler.handle(uploadNFTImageRequestDTO)
     }
 
-
     @GetMapping("/{imageName}")
     fun getImage(@PathVariable imageName: String): ResponseEntity<Any> {
         val getNFTImageRequestDTO = GetNFTImageRequestDTO(imageName)
-        getNFTImageHandler.handle(getNFTImageRequestDTO)
-        val imagePath = Paths.get("/uploads", imageName)
-        val image = Files.readAllBytes(imagePath)
-        val contentType = Files.probeContentType(imagePath)
-        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(image)
+        return getNFTImageHandler.handle(getNFTImageRequestDTO)
     }
 }
