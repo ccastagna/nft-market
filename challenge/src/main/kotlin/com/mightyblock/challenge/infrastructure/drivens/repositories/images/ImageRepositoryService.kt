@@ -18,4 +18,9 @@ class ImageRepositoryService : IImageRepositoryService {
         println("Image url: $imageUrl")
         return imageUrl
     }
+
+    override fun getImage(imageName: String): ByteArray {
+        val imagePath = Paths.get("/uploads", imageName)
+        return Files.readAllBytes(imagePath)
+    }
 }

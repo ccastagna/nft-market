@@ -29,7 +29,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given non existent userId, when getCreatorById, then throw CreatorNotfoundException`() {
+        //Given
         mockGetUserIdReturnNull()
+
+        // When & Then
         assertThrows<CreatorNotFoundException> {
             userService.getCreatorById(userIdMock)
         }.apply {
@@ -41,7 +44,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given existent userId, when getCreatorById, then return user`() {
+        // Given
         mockGetUserIdReturnUser()
+
+        // When & Then
         userService.getCreatorById(userIdMock).apply {
             Assertions.assertEquals(
                 userIdMock, userId
@@ -51,7 +57,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given non existent userId, when getCoCreatorById, then throw CoCreatorNotfoundException`() {
+        // Given
         mockGetUserIdReturnNull()
+
+        // When & Then
         assertThrows<CoCreatorNotFoundException> {
             userService.getCoCreatorById(userIdMock)
         }.apply {
@@ -63,7 +72,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given existent userId, when getCoCreatorById, then return user`() {
+        // Given
         mockGetUserIdReturnUser()
+
+        // When & Then
         userService.getCoCreatorById(userIdMock).apply {
             Assertions.assertEquals(
                 userIdMock, userId
@@ -73,7 +85,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given non existent userId, when getBuyerById, then throw BuyerNotfoundException`() {
+        // Given
         mockGetUserIdReturnNull()
+
+        // When & Then
         assertThrows<BuyerNotFoundException> {
             userService.getBuyerById(userIdMock)
         }.apply {
@@ -85,7 +100,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given existent userId, when getBuyerById, then return user`() {
+        // Given
         mockGetUserIdReturnUser()
+
+        // When & Then
         userService.getBuyerById(userIdMock).apply {
             Assertions.assertEquals(
                 userIdMock, userId
@@ -95,7 +113,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given non existent userId, when getOwnerById, then throw OwnerNotFoundException`() {
+        // Given
         mockGetUserIdReturnNull()
+
+        // When & Then
         assertThrows<OwnerNotFoundException> {
             userService.getOwnerById(userIdMock)
         }.apply {
@@ -107,7 +128,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given existent userId, when getOwnerById, then return user`() {
+        // Given
         mockGetUserIdReturnUser()
+
+        // When & Then
         userService.getOwnerById(userIdMock).apply {
             Assertions.assertEquals(
                 userIdMock, userId
@@ -117,7 +141,10 @@ internal class UserServiceTest {
 
     @Test
     fun `Given a valid user, when updateUser, then return user updated`() {
+        // Given
         doReturn(userMock).`when`(userRepositoryService).updateUser(userMock)
+
+        // When & Then
         userService.updateUser(userMock).apply {
             Assertions.assertEquals(
                 userIdMock, userId
