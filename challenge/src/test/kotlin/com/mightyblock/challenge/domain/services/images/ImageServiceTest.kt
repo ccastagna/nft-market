@@ -6,13 +6,12 @@ import com.mightyblock.challenge.domain.repositories.IImageRepositoryService
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.springframework.web.multipart.MultipartFile
 
 internal class ImageServiceTest {
 
-    private val mockImageBaseUrl = "/api/nfts/images/"
+    private val mockImageBaseUrl = "example.com/api/nfts/images/"
     private val mockImageName = "mockImageName.jpg"
 
     private val imageRepositoryService: IImageRepositoryService = mock()

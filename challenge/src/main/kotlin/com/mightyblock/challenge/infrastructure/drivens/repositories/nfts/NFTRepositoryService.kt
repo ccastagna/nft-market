@@ -27,7 +27,8 @@ class NFTRepositoryService(private val nftRepository: INFTRepository) : INFTRepo
 
     override fun getAllNFTsPaginated(page: Int, size: Int): PageableNFTList {
         val sort: Sort = Sort.by(Sort.Order.desc("uploadTime"))
-        val pageable: Pageable = PageRequest.of(page, size, sort)
+        // Pageable is 0-indexed
+        val pageable: Pageable = PageRequest.of(page - 1, size, sort)
 
         val nftPage: Page<NFTRepositoryDTO> = nftRepository.findAll(pageable)
 
