@@ -15,8 +15,7 @@ class BuyNFTUseCase(
     private val nftService: INFTService
 ) : IBuyNFTUseCase {
     override fun execute(request: BuyNFTRequest): NFTSale {
-// TODO: block resources: buyer balance and nft
-// TODO: get and update resources in parallel or batch
+
         val nftSaleRequirements: NFTSaleRequirements = getNFTSaleRequirements(request)
 
         val nftSale: NFTSale = nftSaleService.executeSaleTransaction(nftSaleRequirements)

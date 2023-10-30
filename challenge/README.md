@@ -268,4 +268,71 @@ NFT $nftId not found.
 # Data model
 
 
+```
+erDiagram
+    users ||--o{ nfts : "CREATES/creator_id"
+    users ||--o{ nfts : "OWNS/owner_id"
+    users ||--o{ nft_sales : "BUYS/buyer_id"
+    users ||--o{ nft_co_creators : "IS_CO_CREATOR/user_id"
+    nfts ||--o{ nft_co_creators : "HAS/nft_id"
+    nfts ||--o{ nft_sales : "IS_SOLD/nft_id"
 
+    users {
+        user_id INT
+        balance DECIMAL
+    }
+
+    nfts {
+        nft_id INT
+        image_url VARCHAR(255)
+        description TEXT
+        upload_time DATETIME
+        creator_id INT
+        owner_id INT
+    }
+
+    nft_co_creators {
+        nft_id INT
+        user_id INT
+    }
+
+    nft_sales {
+        sale_id INT
+        nft_id INT
+        buyer_id INT
+        price DECIMAL
+        sale_time DATETIME
+    }
+```
+![data-model](data-model.png)
+
+# Architecture
+
+Each use case follows the next architecture:
+
+![infrastructure](infrastructure.png)
+
+# How to run
+
+From the project directory run the command 
+
+```
+docker-compose up --build
+```
+
+# How to test
+
+Import the file `Mighty Block Challenge.postman_collection.json` into Postman and run the requests.
+
+# Improvements
+
+- Magic numbers should be replaced by constants.
+- The database should be in a separate container.
+- Images should be stored in AWS S3.
+- Monitors should be added to the application.
+- Metrics should be added to the application.
+- Code coverage should be added.
+- The application should be deployed in a cloud provider.
+- Block resources as buyer balance and nft when are being updated.
+- Get and Update resources as co-creators in parallel or batch
+- Add a cache for the NFTs
