@@ -327,12 +327,11 @@ Import the file `Mighty Block Challenge.postman_collection.json` into Postman an
 # Improvements
 
 - Magic numbers should be replaced by constants.
-- The database should be in a separate container.
 - Images should be stored in AWS S3.
 - Monitors should be added to the application.
 - Metrics should be added to the application.
 - Code coverage should be added.
 - The application should be deployed in a cloud provider.
 - Block resources as buyer balance and nft when are being updated.
-- Get and Update resources as co-creators in parallel or batch
-- Add a cache for the NFTs
+- Get and Update resources as co-creators could execute in parallel or batch.
+- Add a cache for the NFTs.
