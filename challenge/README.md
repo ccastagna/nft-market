@@ -1,6 +1,7 @@
-# Use case: Upload NFT Image
+# API Documentation
+## Use case: Upload NFT Image
 
-## Request:
+### Request:
 - **HTTP method**: POST
 - **Endpoint**: `/api/nfts/images`
 - **Headers**:
@@ -8,16 +9,16 @@
 - **Body**:
     - `image`: file.jpg / file.jpeg / file.png
 
-## Response:
+### Response:
 
-### Status: 200
+#### Status: 200
 ```json
 {
   "imageUrl": "localhost:8080/api/nfts/images/File.jpg"
 }
 ```
 
-### Status: 400
+#### Status: 400
 
 ```json
 Invalid image url: $imageUrl
@@ -40,18 +41,18 @@ Image extension $extension is not allowed
   - png
   - jpg
 
-# Use case: Get NFT Image
+## Use case: Get NFT Image
 
-## Request:
+### Request:
 - **HTTP method**: GET
 - **Endpoint**: `/api/nfts/images/{imageName}`
 
-## Response:
+### Response:
 
-### Status: 200
- With the image
+#### Status: 200
+_With the image_
 
-### Status: 400
+#### Status: 400
 
 ```json
 Image name is required.
@@ -61,24 +62,24 @@ Image name is required.
 Image extension $extension is not allowed
 ```
 
-### Status: 404
+#### Status: 404
 
 ```json
 Image $imageName not found
 ```
 
-# Use case: Get All NFTs Paginated
+## Use case: Get All NFTs Paginated
 
-## Request:
+### Request:
 - **HTTP method**: GET
 - **Endpoint**: `/api/nfts`
 - **Query params**:
     - `page`: [1, ...] (*default*: 1)
     - `size`: [1, ...] (*default*: 3)
 
-## Response:
+### Response:
 
-### Status: 200
+#### Status: 200
 ```json
 {
   "nftList": [
@@ -105,7 +106,7 @@ Image $imageName not found
 }
 ```
 
-### Status: 400
+#### Status: 400
 
 ```json
 Invalid page: ${request.page}. Page must be greater than 0.
@@ -115,9 +116,9 @@ Invalid page: ${request.page}. Page must be greater than 0.
 Invalid size: ${request.size}. Size must be greater than 0.
 ```
 
-# Use case: Mint NFT
+## Use case: Mint NFT
 
-## Request:
+### Request:
 - **HTTP method**: POST
 - **Endpoint**: `/api/nfts`
 - **Headers**:
@@ -134,9 +135,9 @@ Invalid size: ${request.size}. Size must be greater than 0.
   }
   ```
 
-## Response:
+### Response:
 
-### Status: 200
+#### Status: 200
 ```json
 {
   "nftId": "a5863ecd-cf41-4d18-ae2d-f5444e6be204",
@@ -145,7 +146,7 @@ Invalid size: ${request.size}. Size must be greater than 0.
 }
 ```
 
-### Status: 400
+#### Status: 400
 
 ```json
 Invalid creatorId: ${request.creatorId}. CreatorId must be greater than 0.
@@ -163,7 +164,7 @@ Description is required.
 ImageUrl is required.
 ```
 
-### Status: 422
+#### Status: 422
 
 ```json
 Creator with id $creatorId not found
@@ -176,5 +177,95 @@ Co-creator with id $coCreatorId not found
 ```json
 Image not preloaded: $imageUrl
 ```
+
+
+## Use case: Buy NFT
+
+### Request:
+- **HTTP method**: POST
+- **Endpoint**: `/api/nfts/{nftId}/buy`
+- **Headers**:
+  - **Content-type**: application/json
+- **Body**:
+  ```json
+  {
+    "buyerId": 555,
+    "amount": 50.0
+  }
+  ```
+
+### Response:
+
+#### Status: 200
+```json
+{
+  "id": 1,
+  "buyer": {
+    "id": 555,
+    "balance": 50.00
+  },
+  "oldOwner": {
+    "id": 444,
+    "balance": 143.33
+  },
+  "creators": [
+    {
+      "id": 444,
+      "balance": 143.33
+    },
+    {
+      "id": 111,
+      "balance": 103.33
+    },
+    {
+      "id": 222,
+      "balance": 103.33
+    }
+  ],
+  "nft": {
+    "id": "657579fc-d2e2-49ac-a5df-dc7b0e5f26cc",
+    "ownerId": 555
+  },
+  "price": 50,
+  "time": "2023-10-30T01:04:03.167980505"
+}
+```
+
+#### Status: 400
+
+```json
+Invalid buyerId: ${request.buyerId}. BuyerId must be greater than 0.
+```
+
+```json
+NFTId is required.
+```
+
+```json
+Invalid NFT price: ${request.amount}. Amount must be greater than 0.0.
+```
+
+#### Status: 422
+
+```json
+Buyer with id $buyerId not found
+```
+
+```json
+Buyer $buyerId does not have enough balance to buy the NFT. Balance: $balance, NFT price: $nftPrice
+```
+
+```json
+Buyer $buyerId is the owner of the NFT $nftId
+```
+
+#### Status: 404
+
+```json
+NFT $nftId not found.
+```
+
+# Data model
+
 
 

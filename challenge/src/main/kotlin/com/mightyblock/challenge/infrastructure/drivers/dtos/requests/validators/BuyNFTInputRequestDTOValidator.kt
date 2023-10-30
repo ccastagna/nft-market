@@ -6,10 +6,10 @@ import java.math.BigDecimal
 class BuyNFTInputRequestDTOValidator : IInputRequestValidator<BuyNFTRequestDTO> {
 
     override fun validate(request: BuyNFTRequestDTO) {
-        if (request.buyerId <= 0) throw IllegalArgumentException("Invalid buyerId: ${request.buyerId}.")
+        if (request.buyerId <= 0) throw IllegalArgumentException("Invalid buyerId: ${request.buyerId}. BuyerId must be greater than 0.")
 
         if (request.nftId == null) throw IllegalArgumentException("NFTId is required.")
 
-        if (request.amount <= BigDecimal.ZERO) throw IllegalArgumentException("Invalid NFT price: ${request.amount}.")
+        if (request.amount <= BigDecimal.ZERO) throw IllegalArgumentException("Invalid NFT price: ${request.amount}. Amount must be greater than 0.0.")
     }
 }
