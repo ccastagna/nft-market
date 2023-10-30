@@ -50,7 +50,7 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
         thenExpects(
             response, listOf(
                 MockMvcResultMatchers.status().isBadRequest,
-                MockMvcResultMatchers.jsonPath("$").value("Invalid buyerId: $ZERO_USER.")
+                MockMvcResultMatchers.jsonPath("$").value("Invalid buyerId: $ZERO_USER. BuyerId must be greater than 0.")
             )
         )
     }
@@ -67,7 +67,7 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
         thenExpects(
             response, listOf(
                 MockMvcResultMatchers.status().isBadRequest,
-                MockMvcResultMatchers.jsonPath("$").value("Invalid buyerId: $NEGATIVE_USER.")
+                MockMvcResultMatchers.jsonPath("$").value("Invalid buyerId: $NEGATIVE_USER. BuyerId must be greater than 0.")
             )
         )
     }
@@ -84,7 +84,7 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
         thenExpects(
             response, listOf(
                 MockMvcResultMatchers.status().isBadRequest,
-                MockMvcResultMatchers.jsonPath("$").value("Invalid NFT price: ${BigDecimal.ZERO}.")
+                MockMvcResultMatchers.jsonPath("$").value("Invalid NFT price: ${BigDecimal.ZERO}. Amount must be greater than 0.0.")
             )
         )
     }
@@ -101,7 +101,7 @@ class BuyNFTIntegrationTests : IntegrationTestBase() {
         thenExpects(
             response, listOf(
                 MockMvcResultMatchers.status().isBadRequest,
-                MockMvcResultMatchers.jsonPath("$").value("Invalid NFT price: $NEGATIVE_PRICE.")
+                MockMvcResultMatchers.jsonPath("$").value("Invalid NFT price: $NEGATIVE_PRICE. Amount must be greater than 0.0.")
             )
         )
     }
