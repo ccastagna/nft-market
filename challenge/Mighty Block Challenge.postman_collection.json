@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"creatorId\": 444,\n    \"description\": \"Buenos Aires Gold NFT\",\n    \"imageUrl\": \"localhost:8080/api/nfts/images/Buenos-Aires.jpeg\",\n    \"coCreators\": [\n        111, 222\n    ]\n}",
+					"raw": "{\n    \"creatorId\": 444,\n    \"description\": \"Buenos Aires Gold NFT\",\n    \"imageUrl\": \"localhost:8080/api/nfts/images/Buenos-Aires.jpg\",\n    \"coCreators\": [\n        111, 222\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
