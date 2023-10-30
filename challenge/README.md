@@ -115,4 +115,66 @@ Invalid page: ${request.page}. Page must be greater than 0.
 Invalid size: ${request.size}. Size must be greater than 0.
 ```
 
+# Use case: Mint NFT
+
+## Request:
+- **HTTP method**: POST
+- **Endpoint**: `/api/nfts`
+- **Headers**:
+  - **Content-type**: application/json
+- **Body**:
+  ```json
+  {
+    "creatorId": 444,
+    "description": "Buenos Aires Gold NFT",
+    "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+    "coCreators": [
+        111, 222
+    ]
+  }
+  ```
+
+## Response:
+
+### Status: 200
+```json
+{
+  "nftId": "a5863ecd-cf41-4d18-ae2d-f5444e6be204",
+  "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+  "description": "Buenos Aires Gold NFT"
+}
+```
+
+### Status: 400
+
+```json
+Invalid creatorId: ${request.creatorId}. CreatorId must be greater than 0.
+```
+
+```json
+Invalid coCreatorId: $coCreatorId. CoCreatorId must be greater than 0.
+```
+
+```json
+Description is required.
+```
+
+```json
+ImageUrl is required.
+```
+
+### Status: 422
+
+```json
+Creator with id $creatorId not found
+```
+
+```json
+Co-creator with id $coCreatorId not found
+```
+
+```json
+Image not preloaded: $imageUrl
+```
+
 
