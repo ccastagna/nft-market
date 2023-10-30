@@ -16,7 +16,7 @@ class MintNFTUseCase(
 
         val creator: User = userService.getCreatorById(request.creatorId)
 
-        val coCreators: List<User> = request.coCreators
+        request.coCreators
             .map { coCreatorId ->
                 userService.getCoCreatorById(coCreatorId)
             }

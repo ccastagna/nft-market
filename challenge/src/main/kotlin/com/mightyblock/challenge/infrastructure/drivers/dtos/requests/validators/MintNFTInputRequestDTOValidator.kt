@@ -5,10 +5,10 @@ import com.mightyblock.challenge.infrastructure.drivers.dtos.requests.MintNFTReq
 class MintNFTInputRequestDTOValidator : IInputRequestValidator<MintNFTRequestDTO> {
 
     override fun validate(request: MintNFTRequestDTO) {
-        if (request.creatorId <= 0) throw IllegalArgumentException("Invalid creatorId: ${request.creatorId}.")
+        if (request.creatorId <= 0) throw IllegalArgumentException("Invalid creatorId: ${request.creatorId}.  CreatorId must be greater than 0.")
 
         request.coCreators.forEach { coCreatorId ->
-            if (coCreatorId <= 0) throw IllegalArgumentException("Invalid coCreatorId: $coCreatorId.")
+            if (coCreatorId <= 0) throw IllegalArgumentException("Invalid coCreatorId: $coCreatorId. CoCreatorId must be greater than 0.")
         }
 
         if (request.description.isBlank()) throw IllegalArgumentException("Description is required.")
