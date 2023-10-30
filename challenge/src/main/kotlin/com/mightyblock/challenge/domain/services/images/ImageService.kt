@@ -1,6 +1,7 @@
 package com.mightyblock.challenge.domain.services.images
 
 import com.mightyblock.challenge.domain.exceptions.ImageNotFoundException
+import com.mightyblock.challenge.domain.exceptions.ImageNotPreloadedException
 import com.mightyblock.challenge.domain.exceptions.InvalidImageUrlException
 import com.mightyblock.challenge.domain.repositories.IImageRepositoryService
 import org.springframework.web.multipart.MultipartFile
@@ -25,7 +26,11 @@ class ImageService(private val imageRepositoryService: IImageRepositoryService) 
 
     override fun checkImageIsLoadedOrThrow(imageUrl: String) {
         val imageName = extractImageName(imageUrl) ?: throw InvalidImageUrlException(imageUrl)
-        getImage(imageName)
+        try {
+            getImage(imageName)
+        } catch (ex: ImageNotFoundException) {
+            throw ImageNotPreloadedException(imageUrl)
+        }
     }
 
     private fun extractImageName(imageUrl: String): String? {

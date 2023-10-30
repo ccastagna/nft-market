@@ -1,6 +1,7 @@
 package com.mightyblock.challenge.domain.services.images
 
 import com.mightyblock.challenge.domain.exceptions.ImageNotFoundException
+import com.mightyblock.challenge.domain.exceptions.ImageNotPreloadedException
 import com.mightyblock.challenge.domain.exceptions.InvalidImageUrlException
 import com.mightyblock.challenge.domain.repositories.IImageRepositoryService
 import org.junit.jupiter.api.Assertions.*
@@ -78,8 +79,22 @@ internal class ImageServiceTest {
         doThrow(RuntimeException()).`when`(imageRepositoryService).getImage(imageName)
 
         // When & Then
-        assertThrows<ImageNotFoundException> {
+        assertThrows<ImageNotPreloadedException> {
             imageService.checkImageIsLoadedOrThrow(validImageUrl)
+        }.apply {
+            assertEquals("Image not preloaded: $validImageUrl", message)
+        }
+    }
+
+    @Test
+    fun `Given a valid image name but image is not found, when getImage, then should throw ImageNotFoundException`() {
+        // Given
+        val imageName = mockImageName
+        doThrow(RuntimeException()).`when`(imageRepositoryService).getImage(imageName)
+
+        // When & Then
+        assertThrows<ImageNotFoundException> {
+            imageService.getImage(imageName)
         }.apply {
             assertEquals("Image $imageName not found", message)
         }
