@@ -30,7 +30,11 @@ class GetAllNFTsPaginatedHandler(
                     imageUrl = nft.imageUrl,
                     description = nft.description
                 )
-            }
+            },
+            page = pageableNFTList.page.number,
+            size = pageableNFTList.page.size,
+            totalElements = pageableNFTList.page.totalElements,
+            totalPages = pageableNFTList.page.totalPages
         )
 
         return ResponseEntity.ok().body(getAllNFTsPaginatedResponseDTO)

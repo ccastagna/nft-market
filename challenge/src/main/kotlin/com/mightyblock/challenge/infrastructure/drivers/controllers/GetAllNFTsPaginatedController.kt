@@ -14,7 +14,7 @@ class GetAllNFTsPaginatedController(private val getAllNFTsPaginatedHandler: IReq
 
     @GetMapping
     fun getAllNFTsPaginated(
-        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "1") page: Int,
         @RequestParam(defaultValue = "3") size: Int
     ): ResponseEntity<Any> {
         val getAllNFTsPaginatedRequestDTO = GetAllNFTsPaginatedRequestDTO(page, size)

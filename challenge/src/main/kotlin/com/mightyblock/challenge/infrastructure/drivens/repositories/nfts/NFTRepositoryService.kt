@@ -44,7 +44,7 @@ class NFTRepositoryService(private val nftRepository: INFTRepository) : INFTRepo
                 )
             }.toList(),
             page = com.mightyblock.challenge.domain.models.Page(
-                number = nftPage.number,
+                number = nftPage.number + 1, // Pageable is 0-indexed
                 size = nftPage.size,
                 totalPages = nftPage.totalPages,
                 totalElements = nftPage.totalElements
