@@ -85,17 +85,17 @@ Image $imageName not found
   "nftList": [
     {
       "nftId": "a5863ecd-cf41-4d18-ae2d-f5444e6be204",
-      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpg",
       "description": "Buenos Aires Gold NFT"
     },
     {
       "nftId": "a1b823ec-8ae9-4e3c-86f6-259059a87243",
-      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpg",
       "description": "Buenos Aires Gold NFT"
     },
     {
       "nftId": "265e90fd-6400-441b-b047-9154b8920f71",
-      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+      "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpg",
       "description": "Buenos Aires Gold NFT"
     }
   ],
@@ -128,7 +128,7 @@ Invalid size: ${request.size}. Size must be greater than 0.
   {
     "creatorId": 444,
     "description": "Buenos Aires Gold NFT",
-    "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+    "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpg",
     "coCreators": [
         111, 222
     ]
@@ -141,7 +141,7 @@ Invalid size: ${request.size}. Size must be greater than 0.
 ```json
 {
   "nftId": "a5863ecd-cf41-4d18-ae2d-f5444e6be204",
-  "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpeg",
+  "imageUrl": "localhost:8080/api/nfts/images/Buenos-Aires.jpg",
   "description": "Buenos Aires Gold NFT"
 }
 ```
